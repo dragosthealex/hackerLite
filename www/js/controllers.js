@@ -57,6 +57,10 @@ angular.module('starter.controllers', [])
       });
 
     $scope.showChallenge = false;
+
+    $scope.hideButton = function(){
+      document.getElementById('start_btn').style.display = 'none';
+    }
   });
 
 })

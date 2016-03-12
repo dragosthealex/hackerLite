@@ -27,3 +27,9 @@ h2{
 	display: inline;
 	float: left;
 }
+
+textarea{
+	border:1px solid #ccc;
+	width:100%;
+	border-radius:2px;
+}
