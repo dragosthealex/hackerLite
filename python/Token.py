@@ -13,7 +13,7 @@ class Token:
   """
   def __init__(self, startChar):
     # remember the start char
-    self.char = startChar.char
+    self.cargo = startChar.char
     # it has to know about position
     self.sourceText = startChar.sourceText
     self.lineIndex = startChar.lineIndex
@@ -37,11 +37,22 @@ class Token:
     else:
       s = ""
     # if this token is the one that we have
-    if self.type == self.char:
+    if self.type == self.cargo:
       s = s + "Symbol".ljust(tokenTypeLen, ".") + ":" + space + self.type
     elif self.type == "Whitespace":
-      s = s + "Whitespace".ljust(tokenTypeLen, ".") + ":" + space + repr(self.char)
+      s = s + "Whitespace".ljust(tokenTypeLen, ".") + ":" + space + repr(self.cargo)
     else:
-      s = s + self.type.ljust(tokenTypeLen, ".") + ":" + space + self.char
+      s = s + self.type.ljust(tokenTypeLen, ".") + ":" + space + self.cargo
 
-  guts = property(show)
+    return s
+
+    
+  def abort(self,msg):
+    lines = self.sourceText.split("\n")
+    sourceLine = lines[self.lineIndex]
+    raise LexerError("\nIn line "      + str(self.lineIndex + 1)
+           + " near column " + str(self.colIndex + 1) + ":\n\n"
+           + sourceLine.replace("\t"," ") + "\n"
+           + " "* self.colIndex
+           + "^\n\n"
+           + msg)

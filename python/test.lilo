@@ -1,6 +1,6 @@
-say "hello world".
-  say "we need stuff".
+say 'hello world'.
+  say 'we need stuff'.
 box stuff1.
    box stuff2.
 stuff1 <- 3.
-stuff1 -> stuff2.
+exit

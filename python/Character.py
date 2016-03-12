@@ -2,13 +2,13 @@
 EOF = "\0"
 
 class Character:
-  def __init__(self, char, line_no, col_no, char_pos, source):
+  def __init__(self, char, lineIndex, colIndex, sourceIndex, source):
     # We need to store line number, col number, char position, and whole source
     self.char = char
-    self.line_no = line_no
-    self.col_no = col_no
-    self.char_pos = char_pos
-    self.source = source
+    self.lineIndex = lineIndex
+    self.colIndex = colIndex
+    self.sourceIndex = sourceIndex
+    self.sourceText = source
 
   # Display as string
   def __str__(self):
@@ -23,8 +23,8 @@ class Character:
       char = "   EOF"
 
     return (
-            str(self.line_no).rjust(6)
-          + str(self.col_no).rjust(4)
+            str(self.lineIndex).rjust(6)
+          + str(self.colIndex).rjust(4)
           + "  "
           + char
           )
