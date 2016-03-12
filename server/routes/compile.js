@@ -2,15 +2,12 @@ var express = require('express');
 var router = express.Router();
 var exec = require('child_process').exec;
 var fs = require('fs');
-var path = require('path');
 var twilio = require('twilio');
 
 //Give a file number that is not used to the file
 var findFileNumber = function(){
-    var number;
-    do{
-        number = Math.random(0, 999999999); 
-    }while(path.existsSync('lola' + number + '.txt'))
+    number = Math.random(0, 999999999); 
+    return number;
 } 
 
 router.post('/', function(req, res){
@@ -82,8 +79,9 @@ router.post('/message', function(req, res){
             if(err)
                 console.log(err);
 
-            //File is written here. Now run the python script
-            exec('python interpreter.py' + lolaFileName + ' ' + pythonFileName, function(err, stdout, sterr){
+            console.log("File was written");
+            //File is written at this point. Now run the python script
+            exec('python interpreter.py ' + lolaFileName + ' ' + pythonFileName, function(err, stdout, sterr){
                 if(err)
                     console.log(err);
 
@@ -91,10 +89,12 @@ router.post('/message', function(req, res){
                 fs.unlink(lolaFileName);
                 fs.unlink(pythonFileName);
 
+                console.log("Send sms back");
+
                 client.sms.messages.create({
                     to: '+447733645724',
                     from: '+441376350104',
-                    body: stdout;
+                    body: stdout
                 }, function(err, message) {
                     if(!err)
                         console.log(message.sid);
