@@ -24,6 +24,7 @@
     "multer": "^1.1.0",
     "passport": "~0.2.0",
     "passport-local": "~1.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "twilio": "^2.9.0"
   }
 }

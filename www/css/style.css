@@ -1,1 +1,29 @@
 /* Empty. Add your own CSS if you like */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+body, .tab-item, h2, button{
+  font: 100% "Lato", sans-serif; 
+}
+
+h2{
+	font-size:20px;
+	font-weight:700;
+}
+
+.item{
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.right-list{
+	float: right;
+	margin-top:-35px;
+	right:10px;
+	position:absolute;
+}
+
+.checkbox{
+	width:35px;
+	opacity: 0.5;
+	display: inline;
+	float: left;
+}
