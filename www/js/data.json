@@ -1,0 +1,66 @@
+[
+	{
+		"lesson_id": 1,
+		"name": "Lesson 1",
+		"title": "Print a message",
+		"completed": false,
+		"image":"img/biscuit.png",
+		"task":"Hi! My name is Lilo, can you introduce yourself using the SAY statement?"
+	},
+	{
+		"lesson_id": 2,
+		"name": "Lesson 2",
+		"title": "Declare a variable",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},	
+	{
+		"lesson_id": 3,
+		"name": "Lesson 3",
+		"title": "Arithmetic Operations",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},	
+	{
+		"lesson_id": 4,
+		"name": "Lesson 4",
+		"title": "Logic Operations",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},	
+	{
+		"lesson_id": 5,
+		"name": "Lesson 5",
+		"title": "If/Else Statement",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},	
+	{
+		"lesson_id": 6,
+		"name": "Lesson 6",
+		"title": "While Loops",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},
+	{
+		"lesson_id": 7,
+		"name": "Lesson 7",
+		"title": "Lists",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},
+	{
+		"lesson_id": 8,
+		"name": "Lesson 6",
+		"title": "Functions",
+		"completed": false,
+		"image":"img/biscuit.png"
+	},
+	{
+		"lesson_id": 9,
+		"name": "Lesson 6",
+		"title": "Your Project",
+		"completed": false,
+		"image":"img/biscuit.png"
+	}
+]

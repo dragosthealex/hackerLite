@@ -1,0 +1,17 @@
+<ion-view view-title="Hacker Lite">
+  <ion-content class="padding" ng-controller="TutorialCtrl">
+    <div class="list">
+    	<a class="item item-avatar" ng-repeat="lesson in lessons" ui-sref="tab.lesson({lessonId: lesson.lesson_id })">
+    	    <img src="{{lesson.image}}">
+		    <h2>{{lesson.name}}</h2>
+		    <p>{{lesson.title}}</p>
+			<div class="right-list" ng-if="lesson.completed">
+	      		<img class="checkbox"  src="img/checkbox.png">
+	      	</div>
+	      	<div class="right-list" ng-if="!lesson.completed">
+	      		<img class="checkbox"  src="img/lock.png">
+	      	</div>
+	    </a>
+	</div>
+  </ion-content>
+</ion-view>
