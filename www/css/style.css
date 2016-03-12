@@ -1,1 +1,21 @@
 /* Empty. Add your own CSS if you like */
+
+* {margin:0; padding:0; }
+
+
+.editor-container {
+  position: relative;
+  max-width: 650px;
+  margin: 50px auto;
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.textinput {
+  height: 30px;
+  outline: none;
+  resize: none;
+    width:100%;
+  border: 1px solid #f0f0f0;
+}
