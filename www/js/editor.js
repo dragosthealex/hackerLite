@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   //lazyEval('myjscode');
   try {
   	editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-		    lineNumbers: true
-		});
+		    lineNumbers: true,
+	        gutters: ["CodeMirror-linenumbers", "breakpoints"]
+    });
+
   	liloToJS();
   
         
@@ -44,9 +46,17 @@ function liloToJS(){
 	
 
 	console.log(code)
+	console.log("Validate")
 	validate(55,code);
-	lazyEvalOneLiner(code)
+	//lazyEvalOneLiner(code)
 
+}
+
+function makeMarker() {
+  var marker = document.createElement("div");
+  marker.style.color = "#822";
+  marker.innerHTML = "●";
+  return marker;
 }
 
 // JS helper functions:
@@ -99,12 +109,16 @@ function validate(delay, codeToValidate) {
                 }
             }
         } catch (e) {
+            console.log(e.toString())
+            var n = parseInt(e.toString().match(/Line [0-9]+/)[0].match(/[0-9]+/)[0]);
+        	var info = editor.lineInfo(n);
+            editor.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
             /*window.editor.addErrorMarker(e.index, e.description);
             result.innerHTML = e.toString();
             result.setAttribute('class', 'alert-box alert');
             */
 
-             console.log(e.toString())
+             
         }
 
         validateId = undefined;
