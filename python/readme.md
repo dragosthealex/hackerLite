@@ -67,7 +67,7 @@ dog prime (number)
 end
 
 call prime(20).
-call prime(5).
+call prime(7).
 ```
 
 ### Recursive example
