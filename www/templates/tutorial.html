@@ -1,4 +1,8 @@
 <ion-view view-title="Hacker Lite">
+<ion-nav-bar>
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
   <ion-content class="padding" ng-controller="TutorialCtrl">
     <div class="list">
     	<a class="item item-avatar" ng-repeat="lesson in lessons" ui-sref="tab.lesson({lessonId: lesson.lesson_id })">

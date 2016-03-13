@@ -1,7 +1,9 @@
 <ion-view view-title="Lesson {{ lessonId }}">
   <ion-content class="padding" ng-controller="LessonCtrl" class="lesson">
-    	<!--h2 class="lesson-title">Lesson {{ lessonId }} </h2-->
-    	<p> {{ task }}</p>
+    	<h2 class="lesson-title"> {{ title }} </h2>
+    	<img src="{{image}}" alt="lilo image" class="lilo">
+    	<div class="arrow-up"></div>
+    	<p class="task" ng-bind-html="task"> </p>
     	<button class="button button-block button-balanced" ng-click="showChallenge = !showChallenge;hideButton()" id="start_btn">
     		Start challenge
     	</button>
@@ -10,6 +12,11 @@
     		<div id="info" class="error"></div>
     		<textarea rows="4" cols="50" id="editor" class="editor-live"></textarea>
     		<button class="button button-block button-balanced" ng-click="submitCode()">Submit answer</button>
+    		<p class="output" id="output_code">Output:</p>
+    		<p class="correct" id="correct_code"> 
+    			Congratulations! Your code is correct! You can go to the next lesson : 
+    			<a ui-sref="tab.lesson({lessonId: nextLesson })" class="next-lesson">Lesson {{ nextLesson }}</a>
+    		</p>
     	</div>
   </ion-content>
 </ion-view>

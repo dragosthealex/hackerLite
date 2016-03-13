@@ -41,6 +41,7 @@ angular.module('starter.controllers', [])
 
 .controller('LessonCtrl', function($scope, $http, $rootScope, $stateParams) {
   $scope.lessonId = $stateParams.lessonId;
+  $scope.nextLesson = parseInt($stateParams.lessonId) + 1;
   $scope.lessons = [];
 
   $http.get('js/data.json')
@@ -51,7 +52,11 @@ angular.module('starter.controllers', [])
 
     $scope.lessons.forEach(function(entry){
         if(entry.lesson_id == $scope.lessonId){
+          $scope.title = entry.title;
           $scope.task = entry.task;
+          $scope.code = entry.code;
+          $scope.image = entry.image;
+          $scope.completed = entry.completed;
         }
       });
 
@@ -62,13 +67,17 @@ angular.module('starter.controllers', [])
 
       try {
         $rootScope.editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-          lineNumbers: false,
-          gutters: ["CodeMirror-linenumbers", "breakpoints"]
-      });
-          
+            lineNumbers: false,
+            gutters: ["CodeMirror-linenumbers", "breakpoints"]
+        });
+        $rootScope.editor.refresh();
       } catch (e) {
         console.log(e.toString())
       }
+
+      $scope.doc = $rootScope.editor.getDoc();
+      $scope.doc.setValue($scope.code);
+      $rootScope.editor.refresh();
     }
 
     // Function call somewhere in the code:
@@ -121,12 +130,20 @@ angular.module('starter.controllers', [])
         }, delay || 811);
     }
 
+    // JS one-liner function:
+    // -----------------------
+
+    function lazyEvalOneLiner(code) {
+        return (0,eval)(code.replace(/^[\s\xA0]+\/\*|\*\/[\s\xA0]+$/g, ""));
+    }
+
     function liloToJS(){
       var code = $rootScope.editor.getValue();
       var result = "";
+      code = "function evaluateCode()\nvar output <- '';\n" + code;
       
       code = code.replace(/box/g, "var");
-      code = code.replace(/=/g, "==");
+      code = code.replace(/^[<>]=/g, "==");
       code = code.replace(/<-/g, "=");
       code = code.replace(/end/g, "}");
       code = code.replace(/call/g, "");
@@ -139,21 +156,77 @@ angular.module('starter.controllers', [])
           else if(lines[i].match(/else/) != null)
             lines[i] = lines[i].replace(/else/, "}else") + "{\n";
           else if(lines[i].match(/say/) != null)
-            lines[i] = lines[i].replace(/say/, "console.log(") + ")\n";
+            lines[i] = lines[i].replace(/say/, "output+=") + "+'<br>'\n";
           else
             lines[i] += "\n";
           result += lines[i];
       }
-      code =result;
+      code =result + "return output;} evaluateCode()";
       
-      console.log(code)
+      console.log(code);
+      
       validate(55,code);
-      //lazyEvalOneLiner(code)
+      console.log(lazyEvalOneLiner(code));
+      document.getElementById("output_code").innerHTML = "Output:<br><b>" + lazyEvalOneLiner(code) +"</b>";
+      //$scope.outputCode = lazyEvalOneLiner(code);
+    }
+
+    document.getElementById("output_code").style.display="none";
+    document.getElementById("correct_code").style.display="none";
+
+    function checkAnswerOne(){
+      var userCode = $rootScope.editor.getValue();
+      var lines = userCode.split('\n');
+      if(lines.length > 1){
+        return false;
+      }
+      for(var i = 0;i < lines.length;i++){
+        if(lines[i].match(/say/) != null)
+          return true;
+      }
+      return false;
+    }
+
+    function checkAnswerSix(){
+      var userCode = $rootScope.editor.getValue();
+      var lines = userCode.split('\n');
+      if(lines.length > 5){
+        return false;
+      }
+      for(var i = 0;i < lines.length;i++){
+        if(lines[i].match(/while/) != null || lines[i].match(/say/) != null)
+          return true;
+      }
+      return false;
+    }
+
+    function checkAnswers(){
+      console.log("lesson id is" + $scope.lessonId);
+      switch (parseInt($scope.lessonId)){
+        case 1:
+          return checkAnswerOne();
+          break;
+        case 6:
+          return checkAnswerSix();
+          break;
+        default:
+          return false;
+      }
+
     }
 
     $scope.submitCode = function(){
       console.log("I try to submit the code");
       liloToJS();
+      $scope.correctAnswer = false;
+
+      if(checkAnswers()){
+        $scope.correctAnswer = true;
+        $scope.completed = true;
+        document.getElementById("correct_code").style.display="block";
+      }
+
+      document.getElementById("output_code").style.display="block";
     }
 
     console.log("I work!");

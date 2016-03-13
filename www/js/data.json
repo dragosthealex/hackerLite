@@ -5,68 +5,75 @@
 		"title": "Print a message",
 		"completed": false,
 		"image":"img/biscuit.png",
-		"task":"Hi! My name is Lilo, can you introduce yourself using the SAY statement?",
-		"code":"say <- //code//;" 
+		"task":"Hi! My name is Lilo, can you introduce yourself using the SAY statement?<br><span class='code'>say 'your_text'</span>",
+		"code":"say 'your_code_here'" 
 	},
 	{
 		"lesson_id": 2,
 		"name": "Lesson 2",
 		"title": "Declare a variable",
 		"completed": false,
-		"image":"img/biscuit.png",
-		"task":"I have a phone number. It is 0123456789. Can you put in a box? Can you also add my name in another box? My name is Foxy btw. Now print them!",
-		"code":"box phoneNumber <- //code//; box foxName <- //code//"
+		"image":"img/biscuit2.jpg",
+		"task":"In a <b>box</b> we store objects that our program can use. You label each box with a name and then refer to it whenever needed. <br><br>I have a phone number. It is <span class='code'>0123456789</span>. Can you put in a box? Can you also add my name in another box? Now print them! Use the syntax <span class='code'>box <- value</span>",
+		"code":"box phoneNumber <- your_data;\nbox foxName <- your_data"
 	},	
 	{
 		"lesson_id": 3,
 		"name": "Lesson 3",
 		"title": "Arithmetic Operations",
 		"completed": false,
-		"image":"img/biscuit.png",
-		"task":"So you have 2 boxes. One contains my name. The other contains the text My name is. Concatenate their content using +. Print the result!"
+		"image":"img/biscuit3.png",
+		"task":"Arithmetic operations include addition, subtraction, multiplication and division. You can apply these operations to multiple types of values that you store in your boxes. We will look at one example where we will add text strings. And the name of this addition is concatenation. <br><br> So you have 2 boxes now. One contains my name. The other contains the text 'My name is'. Concatenate their content using <span class='code'>+</span>. Say the result!",
+		"code":"box foxName <- 'Lilo'.\nbox nameis <- 'My name is'.\nsay nameis+foxName"
 	},	
 	{
 		"lesson_id": 4,
 		"name": "Lesson 4",
 		"title": "Logic Operations",
 		"completed": false,
-		"image":"img/biscuit.png",
-		"task":"Try to add the content of the two given boxes. After that, try subtracting them. Print the results using say!"
+		"image":"img/biscuit4.png",
+		"task":"When we want to compare the values that we have in 2 different boxes, we use a logic operation. If, for example, we store in a box my age and in another box your age, we can compare them and tell which one of us is younger. Use the signs <, >, <=, >= or == to write an expression that would evaluate to true/false.",
+		"code":"box foxage <- 21.\nbox yourAge <- your_age.\nsay your_logic_operation."
 	},	
 	{
 		"lesson_id": 5,
 		"name": "Lesson 5",
 		"title": "If/Else Statement",
 		"completed": false,
-		"image":"img/biscuit.png",
-		"task":"If you are taller than me tell me that you are taller. Otherwise tell me you're shorter. Use the if statement"
+		"image":"img/biscuit5.jpg",
+		"task":"If you are taller than me tell me that you are taller. Otherwise tell me you're shorter. Use the if statement, which has the following structure: <br><span class='code'>if(condition) <br> &nbsp;statement <br> end</span>",
+		"code":"box foxHeight <- 140.\nbox yourHeight <- your_height.\nif height_comparison_operation\n  say 'your_message'.\nelse\n  say 'your_message'.\nend"
 	},	
 	{
 		"lesson_id": 6,
 		"name": "Lesson 6",
 		"title": "While Loops",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit7.png",
+		"task":"Let's play hide and seek now! You would have to count to 10. How about creating a programme for that using the syntax for a while loop : <span class='code'>while(condition)</span>. The condition can include any logical operations we have previously learnt.",
+		"code": "box x<- 1\nwhile (your_condition)\nsay x\nend_condition\nend"
 	},
 	{
 		"lesson_id": 7,
 		"name": "Lesson 7",
 		"title": "Lists",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit6.jpg"
 	},
 	{
 		"lesson_id": 8,
-		"name": "Lesson 6",
+		"name": "Lesson 8",
 		"title": "Functions",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit8.png",
+		"task": "When you use a sequence of lines of code repeteadly inside a program, you wrap it into a function. We call these functions <b> dog </b>.<br><br> In our scenario, dogs know how to achieve one task and when you need a dog, you call it and it is able to return something to you. Use the following structure to write the code for a new dog:<br><span class='code'>dog dog_name(arguments) <br> &nbsp;&nbsp;statement <br> end</span>",
+		"code":"dog dog_name().\n  say 'fetch toy'.\nend\n\ndog_name()."
 	},
 	{
 		"lesson_id": 9,
-		"name": "Lesson 6",
+		"name": "Lesson 9",
 		"title": "Your Project",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit9.jpeg"
 	}
 ]

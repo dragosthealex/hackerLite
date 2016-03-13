@@ -1,5 +1,6 @@
 /* Empty. Add your own CSS if you like */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Cutive+Mono);
 
 .lesson.lesson-title{
 	font-size:20px;
@@ -9,8 +10,10 @@
 .challenge h1{
 	font-size:20px;
 	font-weight: 700;
-	background-color: #ccc;
+	background-color: #999;
+	border-radius:2px;
 	color:#fff;
+	font-family: "Lato", sans-serif; 
 	padding: 5px;
 }
 
@@ -37,6 +40,11 @@ body, .tab-item, h1, h2, button{
 	color:#00B269;
 }
 
+.task{
+	background-color: #E0ECF0;
+	padding:10px;
+}
+
 .CodeMirror{
 	border:1px solid #ccc;
 	border-radius: 2px;
@@ -55,6 +63,12 @@ h2{
 	font-weight:700;
 }
 
+p.output{
+	border:1px solid #0C88E8;
+	border-radius:2px;
+	padding: 10px;
+}
+
 .item{
 	margin-bottom: 10px;
 	border-radius: 2px;
@@ -65,6 +79,44 @@ h2{
 	margin-top:-35px;
 	right:10px;
 	position:absolute;
+}
+
+span.code{
+	font-family: 'Cutive Mono';
+	font-size:16px;
+}
+
+.lilo{
+	display: block;
+	margin: 0 auto;
+	width:100px;
+}
+
+.button.button-balanced{
+	background-color: #00B269;
+}
+
+.arrow-up{
+	width: 0; 
+	height: 0; 
+	margin: 0 auto;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	
+	border-bottom: 10px solid #E0ECF0;
+}
+
+.correct{
+	background-color: #00B269;
+	color:#fff;
+	border-radius: 2px;
+	padding:10px;
+	font-size:16px;
+}
+
+.next-lesson{
+	color:#fff;
+	font-weight: 700;
 }
 
 .checkbox{
