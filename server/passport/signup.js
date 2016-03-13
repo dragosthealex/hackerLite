@@ -13,7 +13,7 @@ module.exports = function(passport) {
 
     var findOrCreateUser = function(){
       //Find if the user is not already in the database
-      User.findOne({'username' : username},
+      User.findOne({'email' : email},
         function (err, user) {
           //In case of error return it with done
           if(err) {
@@ -32,7 +32,6 @@ module.exports = function(passport) {
             var newUser = new User();
             
             newUser.username = username;
-            newUser.password = createHash(password);
             newUser.email = req.param('email');
             newUser.firstName = req.param('firstname');
             newUser.lastName = req.param('lastname');
