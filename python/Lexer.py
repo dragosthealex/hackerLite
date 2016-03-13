@@ -102,6 +102,8 @@ class Lexer:
       self.getChar()
 
       while self.c1 in LITERAL_CHARS:
+        if self.c1 == ',' and self.c2 not in LITERAL_CHARS:
+          break
         token.cargo += self.c1
         self.getChar()
 

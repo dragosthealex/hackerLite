@@ -41,7 +41,8 @@ class Parser:
     self.indent = 0
     self.lexer = lexer(sourceText)
 
-  def error(self, token):
+  def error(self, token=None):
+    token = self.token
     print("PROBLEM with following token: " + token.type + " at line " + str(token.lineIndex + 1) + ", col " + str(token.colIndex + 1))
     quit()
 
@@ -132,17 +133,38 @@ class Parser:
         self.error(self.token)
       self.block()
 
+  def function_call(self):
+    if not self.found(IDENTIFIER):
+      print("dog call problem: Missing dog name")
+      self.error(self.token)
+
+    if not self.found(LEFT_PARAN):
+      print("dog call problem: Missing '('")
+      self.error(self.token)
+
+    self.expression()
+    while self.found(COMMA):
+      self.expression()
+
+    if not self.found(RIGHT_PARAN):
+      print("dog call problem: Missing ')'")
+      self.error(self.token)
+
   def if_cond(self):
     """
-    ifcond: expression block END
+    ifcond: condition block (ELSE block)? END
     """
-    self.expression()
-    self.block()
-    if self.found(END):
-      pass
-    else:
-      print("if problem")
-      self.error(self.token)
+    self.condition()
+    while (not self.found(END)) and (not self.found(ELSE)):
+      if self.found(EOF):
+        print("If condition error: Unexpected end of file. Probably missing 'end'")
+        self.error(self.token)
+      self.block()
+      if self.found(ELSE):
+        while not self.found(END):
+          self.block()
+        break
+
 
   def while_cond(self):
     """
@@ -207,6 +229,22 @@ class Parser:
 
   def condition(self):
     """
+    condition: "(" condition ")" | (simpleCondition | "!" condition) (("&&" | "||") condition | "!" condition))*
+    """
+    if self.found(LEFT_PARAN):
+      self.condition()
+      if not self.found(RIGHT_PARAN):
+        print("condition error: Missing ')'")
+        self.error(self.token)
+    elif self.found(NOT):
+      self.condition()
+    else:
+      self.simpleCondition()
+      while self.found(AND) or self.found(OR):
+        self.condition()
+
+  def simpleCondition(self):
+    """
     condition: expression ("<" | ">" | "<=" | ">=" | "=" | "!=") expression
     """
     self.expression()
@@ -219,19 +257,20 @@ class Parser:
 
   def statement(self):
     """
-    statement: (EXIT | SAY expression | assignmentStatement) PERIOD
+    statement: (EXIT | CALL function_call | SAY expression | assignmentStatement) PERIOD
     """
+
     if self.found(EXIT):
       pass
+    elif self.found(CALL):
+      self.function_call()
     elif self.found(SAY):
       self.expression()
     else:
       self.assignmentStatement()
 
-    if self.found(PERIOD):
-      pass
-    else:      
-      print("Missing '.'")
+    if not self.found(PERIOD):
+      print("statement problem: Missing '.'")
       self.error(self.token)
 
   def assignmentStatement(self):

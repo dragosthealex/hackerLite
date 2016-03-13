@@ -6,3 +6,11 @@ dog dog1 (test1, test2)
 box myBox <- 13.
 say myBox + 12.
 end
+
+box box1 <- 12, box2 <- 333.
+
+call dog1 (box1, box2).
+
+if (box1 = 12)
+say 'this shit is awesome'.
+end
