@@ -9,6 +9,12 @@ end
 
 box box1 <- 12, box2 <- 333.
 
+dog dog1 (box1, box2)
+box box1 <- box2 + box1.
+say box1.
+end
+
+
 call dog1 (box1, box2).
 
 if (box1 = 12)
