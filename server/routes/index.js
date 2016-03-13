@@ -15,4 +15,4 @@ var passportRouter = function(passport) {
     }));
 }
 
-module.exports = passportRouter;
+module.exports = router;
