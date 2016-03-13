@@ -1,30 +1,22 @@
-<<<<<<< HEAD
-Ionic App Base
+HackerLite
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+This is a mobile app to *help kids from developing countries to learn how to code*. It is compatible with iOS, Android, mobile Web browsers and feature phones. 
 
-## Using this project
+A user can go through 10 basic programming lessons presented as a story and receive one programming puzzle every week. To do this, we created a minimalistic programing language called **LILO** and considered two constraints:
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+* Phone's computer power
+* Phone's internet connection speed and quality
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+If a kid is using a smartphone's native application or browser, they will be able to download a very small app that has ten programming lessons and an interactive code editor with on-device compilation to solve one programming puzzle every week. This means they have access to a portable developing environment that only depends on a weekly SMS to get the challenges.
 
-```bash
-$ npm install -g ionic
-```
+On the other hand, if a kid is using a feature phone, they will have access to one programming puzzle every week, coding using only **SMS**. The text messages are transmitted to our server where our LILO compiler will produce Python code from LILO's reduced syntax to evaluate the output of the puzzle and send back its result.
 
-Then run:
+Features, challenges and things we think are cool:
+* LILO compiler
+* Light and engaging interactive programming tutorials
+* JavaScript on-device compilation
+* SMS coding capabilities
 
-```bash
-$ ionic start myProject tabs
-```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
-||||||| merged common ancestors
-=======
-# hackerLite
->>>>>>> 6235677ddea0591d460fee99437e1108426daedf
+##### Lilo compiler and tests can be found in /python

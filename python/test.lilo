@@ -1,6 +1,31 @@
-say "hello world".
-  say "we need stuff".
-box stuff1.
-   box stuff2.
-stuff1 <- 3.
-stuff1 -> stuff2.
+say 'hello world'.
+  say 'we need stuff'.
+box stuff1 <- 3.
+
+dog dog1 (test1, test2)
+box myBox <- 13.
+say myBox + 12.
+end
+
+box box1 <- 12, box2 <- 333.
+
+dog dog1 (box1, box2)
+box box1 <- box2 + box1.
+say box1.
+end
+
+
+call dog1 (box1, box2).
+
+if (box1 = 12)
+say 'this shit is awesome'.
+end
+
+if(box1 = 12 || box2 = 13)
+say 'box 2 greater than first'.
+end
+
+while (box1 < 30)
+say box1.
+box1 <- box1 + 1.
+end

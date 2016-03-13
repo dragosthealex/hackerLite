@@ -8,16 +8,16 @@ class Scanner:
     #-------------------------------------------------------------------
     #
     #-------------------------------------------------------------------
-    def __init__(self, sourceTextArg):
-        global sourceText, lastIndex, char_pos, line_no, col_no
+    def __init__(self, sourceTextArg, verbose=False):
+        global sourceText, lastIndex, sourceIndex, lineIndex, colIndex
         sourceText = sourceTextArg
         lastIndex    = len(sourceText) - 1
-        char_pos  = -1
-        line_no    =  0
-        col_no     = -1
+        sourceIndex  = -1
+        lineIndex    =  0
+        colIndex     = -1
 
         self.ENDMARK = "\0"
-
+        self.verbose = verbose
 
     #-------------------------------------------------------------------
     #
@@ -26,34 +26,34 @@ class Scanner:
         """
         Return the next character in sourceText.
         """
-        global lastIndex, char_pos, line_no, col_no
+        global lastIndex, sourceIndex, lineIndex, colIndex
 
-        char_pos += 1    # increment the index in sourceText
+        sourceIndex += 1    # increment the index in sourceText
 
         # maintain the line count
-        if char_pos > 0:
-            if sourceText[char_pos - 1] == "\n":
+        if sourceIndex > 0:
+            if sourceText[sourceIndex - 1] == "\n":
                 #-------------------------------------------------------
                 # The previous character in sourceText was a newline
                 # character.  So... we're starting a new line.
-                # Increment line_no and reset col_no.
+                # Increment lineIndex and reset colIndex.
                 #-------------------------------------------------------
-                line_no +=1
-                col_no  = -1
+                lineIndex +=1
+                colIndex  = -1
 
-        col_no += 1
+        colIndex += 1
 
-        if char_pos > lastIndex:
+        if sourceIndex > lastIndex:
             # We've read past the end of sourceText.
             # Return the ENDMARK character.
-            char = Character(self.ENDMARK, line_no, col_no, char_pos,sourceText)
+            char = Character(self.ENDMARK, lineIndex, colIndex, sourceIndex,sourceText)
         else:
-            c    = sourceText[char_pos]
-            char = Character(c, line_no, col_no, char_pos, sourceText)
+            c    = sourceText[sourceIndex]
+            char = Character(c, lineIndex, colIndex, sourceIndex, sourceText)
 
         return char
 
-    def lookahead(offset=1):
+    def lookahead(self,offset=1):
         """
         Return a string (not a Character object) containing the character
         at position:
@@ -66,6 +66,6 @@ class Scanner:
         if index > lastIndex:
             # We've read past the end of sourceText.
             # Return the ENDMARK character.
-            return ENDMARK
+            return self.ENDMARK
         else:
             return sourceText[index]

@@ -13,7 +13,7 @@ return
 exit
 box
 """
-keywords = Keywords.split()
+keywords = keywords.split()
 
 #----------------------------------------------------------
 # a list of symbols that are one character long
@@ -23,7 +23,7 @@ singleCharSymbols = """
 ( )
 < >
 / * + - %
-! &
+! & , 
 .  ;
 """
 singleCharSymbols = singleCharSymbols.split()
@@ -62,6 +62,7 @@ WHITESPACE_CHARS = " \t\n"
 #----------------------------------------------------------
 STRING = "String"
 VAR = "Variable"
+LITERAL = "Number"
 WHITESPACE = "Whitespace"
 COMMENT = "Comment"
 EOF = "Eof"
