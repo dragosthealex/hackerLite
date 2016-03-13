@@ -1,7 +1,9 @@
 HackerLite
 =====================
 
-This is a mobile app compatible with iOS, Android, mobile Web browsers and feature phones. Its purpose is to *help kids from developing countries to learn how to code*. A user can go through 10 basic programming lessons presented as a story and receive one programming puzzle every week. To do this, we created a minimalistic programing language called **LILO** and considered two constraints:
+This is a mobile app to *help kids from developing countries to learn how to code*. It is compatible with iOS, Android, mobile Web browsers and feature phones. 
+
+A user can go through 10 basic programming lessons presented as a story and receive one programming puzzle every week. To do this, we created a minimalistic programing language called **LILO** and considered two constraints:
 
 * Phone's computer power
 * Phone's internet connection speed and quality
