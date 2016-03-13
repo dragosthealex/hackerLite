@@ -1,13 +1,15 @@
 <ion-view view-title="Lesson {{ lessonId }}">
-  <ion-content class="padding" ng-controller="LessonCtrl">
-    	<h2>Lesson {{ lessonId }} </h2>
+  <ion-content class="padding" ng-controller="LessonCtrl" class="lesson">
+    	<!--h2 class="lesson-title">Lesson {{ lessonId }} </h2-->
     	<p> {{ task }}</p>
-    	<button class="button button-block button-balanced" ng-click="showChallenge = !showChallenge">
+    	<button class="button button-block button-balanced" ng-click="showChallenge = !showChallenge;hideButton()" id="start_btn">
     		Start challenge
     	</button>
     	<div class="challenge" ng-show="showChallenge" id="challenge_div">
-    		<h2>The challenge</h2>
-    		<textarea rows="4" cols="50"></textarea>
+    		<h1 class="challenge-title">The challenge</h1>
+    		<div id="info" class="error"></div>
+    		<textarea rows="4" cols="50" id="editor" class="editor-live"></textarea>
+    		<button class="button button-block button-balanced" ng-click="submitCode()">Submit answer</button>
     	</div>
   </ion-content>
 </ion-view>

@@ -1,7 +1,53 @@
 /* Empty. Add your own CSS if you like */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
-body, .tab-item, h2, button{
-  font: 100% "Lato", sans-serif; 
+
+.lesson.lesson-title{
+	font-size:20px;
+	font-weight:700;
+}
+ 
+.challenge h1{
+	font-size:20px;
+	font-weight: 700;
+	background-color: #ccc;
+	color:#fff;
+	padding: 5px;
+}
+
+body, .tab-item, h1, h2, button{
+  font-family: "Lato", sans-serif; 
+}
+
+/** {margin:0; padding:0; }*/
+
+.editor-container {
+  position: relative;
+  max-width: 650px;
+  margin: 50px auto;
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.error, .alert{
+	color:#FF4141;
+}
+
+.success{
+	color:#00B269;
+}
+
+.CodeMirror{
+	border:1px solid #ccc;
+	border-radius: 2px;
+}
+
+.textinput {
+  height: 30px;
+  outline: none;
+  resize: none;
+  width:100%;
+  border: 1px solid #f0f0f0;
 }
 
 h2{
@@ -22,8 +68,13 @@ h2{
 }
 
 .checkbox{
-	width:35px;
+	width:30px;
 	opacity: 0.5;
 	display: inline;
 	float: left;
 }
+
+textarea{
+	border:1px solid #ccc;
+	width:100%;
+	border-radius:2px;
