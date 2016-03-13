@@ -369,8 +369,9 @@ class Parser:
     if self.found(BOX, node):
       pass
     else:
-      print("'box' keyword missing")
-      self.error(self.token)
+      # print("'box' keyword missing")
+      # self.error(self.token)
+      pass
     self.assignment(node)
     while self.found(COMMA, node):
       self.assignment(node)

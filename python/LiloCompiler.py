@@ -2,6 +2,7 @@ from Lexer import *
 from Scanner import *
 from symbols import *
 from Parser import *
+import os
 
 class LiloCompiler:
   def __init__(self, sourceFileName, outputFileName, verbose=False):
@@ -9,8 +10,11 @@ class LiloCompiler:
     f = open(sourceFileName, "r")
     self.sourceText = f.read()
     f.close()
-    self.outputFile = open(outputFileName, "a")
+    
+    if os.path.exists(outputFileName):
+      os.remove(outputFileName)
 
+    self.outputFile = open(outputFileName, "a")
     self.scanner = Scanner(self.sourceText, verbose)
     self.lexer = Lexer(self.sourceText, verbose)
     self.parser = Parser(self.sourceText, self.outputFile, verbose)

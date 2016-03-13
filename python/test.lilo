@@ -24,3 +24,8 @@ end
 if(box1 = 12 || box2 = 13)
 say 'box 2 greater than first'.
 end
+
+while (box1 < 30)
+say box1.
+box1 <- box1 + 1.
+end
