@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('LessonCtrl', function($scope, $http, $stateParams) {
+.controller('LessonCtrl', function($scope, $http, $rootScope, $stateParams) {
   $scope.lessonId = $stateParams.lessonId;
   $scope.lessons = [];
 
@@ -61,14 +61,14 @@ angular.module('starter.controllers', [])
       document.getElementById('start_btn').style.display = 'none';
 
       try {
-      editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-          lineNumbers: false
+        $rootScope.editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+          lineNumbers: false,
+          gutters: ["CodeMirror-linenumbers", "breakpoints"]
       });
           
       } catch (e) {
         console.log(e.toString())
       }
-
     }
 
     // Function call somewhere in the code:
@@ -93,13 +93,13 @@ angular.module('starter.controllers', [])
                     result.innerHTML = 'Invalid code. Total issues: ' + errors.length;
                     console.log('Invalid code. Total issues: ' + errors.length);
                     for (i = 0; i < errors.length; i += 1) {
-                        window.editor.addErrorMarker(errors[i].index, errors[i].description);
+                        $rootScope.editor.addErrorMarker(errors[i].index, errors[i].description);
                         console.log(errors[i].index + " " + errors[i].description)
                         resultMessage = [false,errors[i].description]
                     }
                     result.setAttribute('class', 'alert-box alert');
                 } else {
-                    result.innerHTML = 'Code is syntactically valid.';
+                    result.innerHTML = 'Yey! Your code is syntactically valid.';
                     result.setAttribute('class', 'alert-box success');
                      resultMessage = [true,'Code is syntactically valid.'];
                     if (syntax.body.length === 0) {
@@ -109,6 +109,10 @@ angular.module('starter.controllers', [])
                 }
             } catch (e) {
                 //window.editor.addErrorMarker(e.index, e.description);
+                console.log(e.toString())
+                var n = parseInt(e.toString().match(/Line [0-9]+/)[0].match(/[0-9]+/)[0]);
+                var info = $rootScope.editor.lineInfo(n);
+                $rootScope.editor.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
                 result.innerHTML = "Oops it looks like there is something wrong: " + e.toString();
                 result.setAttribute('class', 'alert-box alert');
             }
@@ -118,7 +122,7 @@ angular.module('starter.controllers', [])
     }
 
     function liloToJS(){
-      var code = editor.getValue();
+      var code = $rootScope.editor.getValue();
       var result = "";
       
       code = code.replace(/box/g, "var");

@@ -33,6 +33,10 @@ body, .tab-item, h1, h2, button{
 	color:#FF4141;
 }
 
+.success{
+	color:#00B269;
+}
+
 .CodeMirror{
 	border:1px solid #ccc;
 	border-radius: 2px;
