@@ -18,3 +18,5 @@ Features, challenges and things we think are cool:
 * JavaScript on-device compilation
 * SMS coding capabilities
 
+
+##### Lilo compiler and tests can be found in /python
