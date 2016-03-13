@@ -70,6 +70,18 @@ call prime(20).
 call prime(5).
 ```
 
+### Recursive example
+```
+dog recursive(number)
+  if number != 0
+    call recursive(number-1).
+  end
+  say number.
+end
+
+call recursive(10).
+```
+
 ### To do:
 - String concatenation
 - String + int concatenation
