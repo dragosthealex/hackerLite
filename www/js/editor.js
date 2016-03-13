@@ -75,6 +75,7 @@ function validate(delay, codeToValidate) {
     validateId = window.setTimeout(function () {
         var result, syntax, errors, i;
         code = codeToValidate;
+        result = document.getElementById('info');
 
 
         try {
