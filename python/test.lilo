@@ -29,3 +29,5 @@ while (box1 < 30)
 say box1.
 box1 <- box1 + 1.
 end
+
+3 + box1.

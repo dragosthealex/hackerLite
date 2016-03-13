@@ -271,7 +271,7 @@ class Parser:
 
   def factor(self, node=None):
     """
-    factor: STRING | IDENTIFIER | NUMBER | "(" expression ")"
+    factor: STRING | IDENTIFIER | NUMBER | "(" expression ")" | LIST
     """
     if self.found(STRING, node):
       pass
@@ -290,6 +290,12 @@ class Parser:
       else:
         print("factor problem: missing ')'")
         self.error(self.token)
+    # elif self.found(LIST_BEGIN):
+    #   self.found(NUMBER)
+    #   while self.found(COMMA):
+    #     self.found(NUMBER)
+    #   if not self.found(LIST_END):
+    #     print("factor problem: lists should end with []")
     else:
       print("factor problem: wrong token")
       self.error(self.token)
@@ -361,7 +367,7 @@ class Parser:
 
   def statement(self, node=None):
     """
-    statement: (EXIT | CALL function_call | SAY expression | assignmentStatement) PERIOD
+    statement: (EXIT | CALL function_call | SAY expression | assignmentStatement | RETURN expression) PERIOD
     """
 
     if self.found(EXIT, node):
@@ -370,6 +376,8 @@ class Parser:
       self.function_call(node)
     elif self.found(SAY, node):
       self.expression(node)
+    elif self.found(RETURN, node):
+      self.expression()
     else:
       self.assignmentStatement(node)
 

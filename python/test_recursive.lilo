@@ -1,0 +1,8 @@
+dog recursive(number)
+  if number != 0
+    call recursive(number-1).
+  end
+  say number.
+end
+
+call recursive(10).
