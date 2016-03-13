@@ -52,17 +52,22 @@ Basic function implementation. Functions are declared with **dog** keyword (got 
 They can have any number of parameters. There is not yet any support for default parameters.
 ```
 /* Prime number implementation */
-dog prime(number)
+dog prime (number)
   box d <- 2.
-  while (number % d) = 0 && d <= number/2
-    number <- number + 1
+  while number % d = 1 && d <= number/2
+    d <- d + 1.
   end
-  if d > number/2
-    say 'the number is prime'
+  say 'current number:'.
+  say number.
+  if (d % 2 != 0)
+    say 'the number is prime'.
   else
-    say 'the number is not prime'
+    say 'the number is not prime'.
   end
 end
+
+call prime(20).
+call prime(5).
 ```
 
 ### To do:
