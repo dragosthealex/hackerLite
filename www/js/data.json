@@ -5,35 +5,41 @@
 		"title": "Print a message",
 		"completed": false,
 		"image":"img/biscuit.png",
-		"task":"Hi! My name is Lilo, can you introduce yourself using the SAY statement?"
+		"task":"Hi! My name is Lilo, can you introduce yourself using the SAY statement?",
+		"code":"say <- //code//;" 
 	},
 	{
 		"lesson_id": 2,
 		"name": "Lesson 2",
 		"title": "Declare a variable",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit.png",
+		"task":"I have a phone number. It is 0123456789. Can you put in a box? Can you also add my name in another box? My name is Foxy btw. Now print them!",
+		"code":"box phoneNumber <- //code//; box foxName <- //code//"
 	},	
 	{
 		"lesson_id": 3,
 		"name": "Lesson 3",
 		"title": "Arithmetic Operations",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit.png",
+		"task":"So you have 2 boxes. One contains my name. The other contains the text My name is. Concatenate their content using +. Print the result!"
 	},	
 	{
 		"lesson_id": 4,
 		"name": "Lesson 4",
 		"title": "Logic Operations",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit.png",
+		"task":"Try to add the content of the two given boxes. After that, try subtracting them. Print the results using say!"
 	},	
 	{
 		"lesson_id": 5,
 		"name": "Lesson 5",
 		"title": "If/Else Statement",
 		"completed": false,
-		"image":"img/biscuit.png"
+		"image":"img/biscuit.png",
+		"task":"If you are taller than me tell me that you are taller. Otherwise tell me you're shorter. Use the if statement"
 	},	
 	{
 		"lesson_id": 6,

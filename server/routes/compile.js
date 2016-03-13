@@ -33,23 +33,13 @@ router.post('/', function(req, res){
 
             //Delete the temporary lola and python apps
             fs.unlink(lolaFileName);
-            fs.unlink(pythonFileName);
+            //fs.unlink(pythonFileName);
 
             //Send the resut of the compiling back
             res.json({compileResult: stdout});
         }); //exec01
     }); //writeFile1
-}) //router.post1
-
-var sendMessageBack = function(output){
-    // Twilio Credentials
-    var accountSid = 'AC49beb2b0ce8058005d7db2504507a09f';
-    var authToken = '86bafd16b3b70d18e85e051fefddb6f1';
-
-    //require the Twilio module and create a REST client
-    var twilio = require('twilio');
-    var client = new twilio.RestClient(accountSid, authToken);
-};
+}); //router.post1
 
 router.post('/message', function(req, res){
     //get the message Sid
@@ -87,10 +77,11 @@ router.post('/message', function(req, res){
 
                 //Delete the temporary lola and python apps
                 fs.unlink(lolaFileName);
-                fs.unlink(pythonFileName);
+                //fs.unlink(pythonFileName);
 
                 console.log("Send sms back");
 
+                stdout = 'dsajdkljsa';
                 client.sms.messages.create({
                     to: '+447733645724',
                     from: '+441376350104',
@@ -107,9 +98,7 @@ router.post('/message', function(req, res){
             }); //exec01
         }); //writeFile1
     });
-})
-
-router.post
+});
 
 //return the router
 module.exports = router;
