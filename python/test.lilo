@@ -1,6 +1,8 @@
 say 'hello world'.
   say 'we need stuff'.
-box stuff1.
-   box stuff2.
-stuff1 <- 3.
-exit
+box stuff1 <- 3.
+
+dog dog1 (test1, test2)
+box myBox <- 13.
+say myBox + 12.
+end

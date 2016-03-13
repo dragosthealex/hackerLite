@@ -1,6 +1,7 @@
 from Lexer import *
 from Scanner import *
 from symbols import *
+from Parser import *
 
 class Compiler:
   def __init__(self, sourceFile):
@@ -11,6 +12,7 @@ class Compiler:
 
     self.scanner = Scanner(self.sourceText)
     self.lexer = Lexer(self.sourceText)
+    self.parser = Parser(self.sourceText)
 
   def scanner_driver(self):
     character = self.scanner.get()
@@ -27,3 +29,7 @@ class Compiler:
       print(token.show(True))
       if token.type == EOF: 
         break
+
+  def parser_driver(self):
+    print("There's the parser:")
+    self.parser.parse()
