@@ -3,14 +3,16 @@ from Token import *
 from symbols import *
 
 class Lexer:
-  def __init__(self, sourceText):
+  def __init__(self, sourceText, verbose=False):
     """
     """
     # Init the scanner
-    self.scanner = Scanner(sourceText)
+    self.scanner = Scanner(sourceText, verbose)
     self.ENDMARK = self.scanner.ENDMARK
     # Read first char
     self.getChar()
+
+    self.verbose = verbose
 
   def dq(self, s): 
     return '"%s"' %s

@@ -8,7 +8,7 @@ class Scanner:
     #-------------------------------------------------------------------
     #
     #-------------------------------------------------------------------
-    def __init__(self, sourceTextArg):
+    def __init__(self, sourceTextArg, verbose=False):
         global sourceText, lastIndex, sourceIndex, lineIndex, colIndex
         sourceText = sourceTextArg
         lastIndex    = len(sourceText) - 1
@@ -17,7 +17,7 @@ class Scanner:
         colIndex     = -1
 
         self.ENDMARK = "\0"
-
+        self.verbose = verbose
 
     #-------------------------------------------------------------------
     #

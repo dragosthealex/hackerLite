@@ -14,3 +14,7 @@ call dog1 (box1, box2).
 if (box1 = 12)
 say 'this shit is awesome'.
 end
+
+if(box1 = 12 || box2 = 13)
+say 'box 2 greater than first'.
+end
