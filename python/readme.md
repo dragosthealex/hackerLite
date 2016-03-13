@@ -76,3 +76,5 @@ call prime(5).
 - Default types
 - Read from file
 - Cmd line parameters
+- Lists
+- Dictionaries
