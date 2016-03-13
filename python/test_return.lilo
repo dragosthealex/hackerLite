@@ -1,0 +1,9 @@
+dog funct(number)
+  number <- number + 10.
+  return number.
+end
+
+call funct(20).
+say call funct(20).
+box box1 <- call funct(22).
+say box1.

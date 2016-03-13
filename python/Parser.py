@@ -315,9 +315,12 @@ class Parser:
 
   def expression(self, node=None):
     """
-    expression: (term ((PLUS | MINUS) term)*)
+    expression: (term ((PLUS | MINUS) term)* | statement)
     """
     if(self.found(LEFT_PARAN)):
+      if(self.found(CALL)):
+        self.function_call()
+        return
       self.term(node)
       while self.found(PLUS, node) or self.found(MINUS, node):
         if self.found(STRING, node):
@@ -328,6 +331,9 @@ class Parser:
         print("expression problem: missing ')'")
         self.error(self.token)
     else:
+      if(self.found(CALL)):
+        self.function_call()
+        return
       self.term(node)
       while self.found(PLUS, node) or self.found(MINUS, node):
         if self.found(STRING, node):
@@ -367,7 +373,7 @@ class Parser:
 
   def statement(self, node=None):
     """
-    statement: (EXIT | CALL function_call | SAY expression | assignmentStatement | RETURN expression) PERIOD
+    statement: (EXIT | SAY expression | assignmentStatement | RETURN expression) PERIOD
     """
 
     if self.found(EXIT, node):
