@@ -106,6 +106,10 @@ class Parser:
           self.out.write('\n')
         else:
           self.out.write(', ')
+      elif token_type == ELSE:
+        self.indent -= 1
+        self.out.write(self.indent*'  ' + 'else:\n')
+        self.indent += 1
       else:
         # write directly the token
         self.out.write(str(self.token.cargo) + ' ')
@@ -123,7 +127,7 @@ class Parser:
     self.executing.add("program")
 
     node = Node()
-    self.statement(node)
+    self.block(node)
     while not self.found(EOF, node):
       self.block(node)
     self.executing.remove("program")
@@ -292,11 +296,11 @@ class Parser:
 
   def term(self, node=None):
     """
-    term: factor ((MULTIPLY | DIVIDE) factor)*
+    term: factor ((MULTIPLY | DIVIDE | MOD) factor)*
     """
     self.factor(node)
 
-    while self.found(MULTIPLY, node) or self.found(DIVIDE, node):
+    while self.found(MULTIPLY, node) or self.found(DIVIDE, node) or self.found(MOD, node):
       if self.found(STRING, node):
         print("term problem: cannot perform arithmetics on strings")
         self.error(self.token)
@@ -307,12 +311,23 @@ class Parser:
     """
     expression: (term ((PLUS | MINUS) term)*)
     """
-    self.term(node)
-    while self.found(PLUS, node) or self.found(MINUS, node):
-      if self.found(STRING, node):
-        print("expression problem: cannot perform arithmetics on strings")
-        self.error(self.token)
+    if(self.found(LEFT_PARAN)):
       self.term(node)
+      while self.found(PLUS, node) or self.found(MINUS, node):
+        if self.found(STRING, node):
+          print("expression problem: cannot perform arithmetics on strings")
+          self.error(self.token)
+        self.term(node)
+      if not self.found(RIGHT_PARAN):
+        print("expression problem: missing ')'")
+        self.error(self.token)
+    else:
+      self.term(node)
+      while self.found(PLUS, node) or self.found(MINUS, node):
+        if self.found(STRING, node):
+          print("expression problem: cannot perform arithmetics on strings")
+          self.error(self.token)
+        self.term(node)
 
   def condition(self, node=None):
     """
@@ -338,9 +353,11 @@ class Parser:
     if (self.found(GE, node) or self.found(LE, node) or self.found(LT, node) or self.found(GT, node)
       or self.found(EQ, node) or self.found(NE, node)):
       self.expression(node)
-    else:
+    elif self.token.type != RIGHT_PARAN:
       print("condition error: wrong token")
       self.error(self.token)
+    else:
+      pass
 
   def statement(self, node=None):
     """

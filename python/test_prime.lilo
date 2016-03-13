@@ -1,0 +1,16 @@
+dog prime (number)
+  box d <- 2.
+  while number % d = 1 && d <= number/2
+    d <- d + 1.
+  end
+  say 'current number:'.
+  say number.
+  if (d % 2 != 0)
+    say 'the number is prime'.
+  else
+    say 'the number is not prime'.
+  end
+end
+
+call prime(20).
+call prime(5).

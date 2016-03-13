@@ -15,6 +15,10 @@ def test_parser(sourceFile, outFile):
 
 if os.path.exists("out.py"):
   os.remove("out.py")
-test_scanner("test.lilo", "out.py")
-test_lexer("test.lilo", "out.py")
-test_parser("test.lilo", "out.py")
+test_scanner("test.lilo", "out1.py")
+test_lexer("test.lilo", "out1.py")
+test_parser("test.lilo", "out1.py")
+
+test_scanner("test_prime.lilo", "out2.py")
+test_lexer("test_prime.lilo", "out2.py")
+test_parser("test_prime.lilo", "out2.py")
